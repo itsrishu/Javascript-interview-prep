@@ -1,11 +1,11 @@
-const myPromiseDotAnyPolyfill = (promiseArray) => {
-	// takes in an array of promises
-	// returns a promise
-	// the promise resolves with the result of any of the passed promise
-	// or
-	// if all of the promises are rejected then the returned promise is rejected with the array of all input promises reasons.
-	// Doesn't keep order of the input promise array
+// takes in an array of promises
+// returns a promise
+// the promise resolves with the result of any of the passed promise
+// or
+// if all of the promises are rejected then the returned promise is rejected with the array of all input promises reasons.
+// Doesn't keep order of the input promise array
 
+const myPromiseDotAnyPolyfill = (promiseArray) => {
 	let errorsArray = []
 	let failedPromise = 0
 

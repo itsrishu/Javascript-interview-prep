@@ -1,12 +1,10 @@
 /* WRITE YOUR OWN CUSTOM DEBOUNCE */
 
-function myDebounce(cb, delay) {
+function customDebounce(cb, delay = 250) {
 	let timer
 
-	return function (...args) {
-		if (timer) {
-			clearTimeout(timer)
-		}
+	return (...args) => {
+		clearTimeout(timer)
 		timer = setTimeout(() => {
 			cb(...args)
 		}, delay)

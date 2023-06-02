@@ -1,4 +1,5 @@
-/* Given an object and a filter function, write a function that will go through and filter the object, then return a filtered object */
+/* Given an object and a filter function, write a function that will go through and filter the object, 
+then return a filtered object */
 
 const obj = {
 	a: 1,

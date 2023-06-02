@@ -1,14 +1,12 @@
+// takes in an array of promises
+// returns a promise
+// the promise resolves with the result of all passed promise
+// or
+// reject with the error message of first rejected promise
+// Results are returned in the same order as the promises in a given array
+//The returned promise reolves with an array of the fulfillment values.
+
 const myPromiseDotAllPolyfill = (promiseArray) => {
-	// takes in an array of promises
-	// returns a promise
-	// the promise resolves with the result of all passed promise
-	// or
-	// reject with the error message of first rejected promise
-	// Results are returned in the same order as the promises in a given array
-	// Order is maintained as of promiseArray
-
-	//The returned promise reolves with an array of the fulfillment values.
-
 	let results = []
 	let completedPromise = 0
 

@@ -55,11 +55,28 @@ function add(a) {
 	}
 }
 
-// console.log(add(3)(4)(5)(8)(9)())
+console.log(add(3)(4)(5)(8)(9)()) // 29
+console.log(add(3)(4)(5)(8)(9)) // 29
+
+// both are correct as a value is returned and not a function from add function
+
+function addTwoNumber(a) {
+	return function (b) {
+		return a + b
+	}
+}
+
+//add(2)(3)() // error
+
+/* If you call add(2)(3)() with an empty set of parentheses at the end,
+ you will get an error in JavaScript because the returned value from add(2)(3) is a function 
+and cannot be called with an empty set of parentheses. */
+
+// () at the end means the functions is executed and it will return a value since we are returning a value from the function.
 
 /*  CURRYING vs PARTIAL APPLICATION */
 
-// - currying is basically the number of returned functions is equal to the numbe rof arguments it recieves
+// - currying is basically the number of returned functions is equal to the numbe of arguments it recieves
 // - Partial application transforms a function into another function with smaller arity.
 
 /* PARTIAL APPLICATION */
@@ -98,5 +115,5 @@ function curry(func) {
 	}
 }
 
-const test = curry(normalFunction)
-console.log(test)
+//const test = curry(normalFunction)
+//console.log(test)

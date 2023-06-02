@@ -1,9 +1,9 @@
-const myPromiseDotAllSettledPolyfill = (promiseArray) => {
-	// takes in an array of promises
-	// returns a promise that fulfills after all promises have either been fulfilled or rejected
-	// with an array of objects taht each describes teh outcomes of each promise
-	// order is maintained as of Promise.all
+// takes in an array of promises
+// returns a promise that fulfills after all promises have either been fulfilled or rejected
+// with an array of objects that each describes the outcomes of each promise
+// order is maintained as of Promise.all
 
+const myPromiseDotAllSettledPolyfill = (promiseArray) => {
 	const mappedPromise = promiseArray.map((promise) => {
 		return Promise.resolve(promise)
 			.then((response) => {
