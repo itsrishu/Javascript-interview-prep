@@ -5,21 +5,6 @@
 // returned promise resolves with the value of the input promise of rejects with the reason of input promise
 // evrn though there is a resolve but task3 gets rejected first so task3 is the ouptut
 
-const myPromiseDotRacePolyfill = (promiseArray) => {
-	return new Promise((resolve, reject) => {
-		promiseArray.forEach((promise) => {
-			Promise.resolve(promise).then(
-				(res) => {
-					resolve(res)
-				},
-				(e) => reject(e)
-			)
-		})
-	})
-}
-
-// Input
-
 const asyncTask1 = (text) => {
 	return new Promise(function (resolve, reject) {
 		setTimeout(function () {
@@ -49,10 +34,18 @@ const promiseArray = [
 	asyncTask3('task3'),
 ]
 
-myPromiseDotRacePolyfill(promiseArray)
-	.then((results) => {
-		console.log('got results', results)
+/** Polyfill */
+
+function myPromiseDotRace(promiseArray) {
+	return new Promise((resolve, reject) => {
+		promiseArray.forEach((promise, index) => {
+			Promise.resolve(promise)
+				.then((res) => resolve(res))
+				.catch((err) => reject(err))
+		})
 	})
-	.catch((err) => {
-		console.log(err)
-	})
+}
+
+myPromiseDotRace(promiseArray)
+	.then((res) => console.log(res))
+	.catch((err) => console.log(err))

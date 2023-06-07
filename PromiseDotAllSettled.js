@@ -47,7 +47,11 @@ const asyncTask3 = (text) => {
 	})
 }
 
-const promiseArray = [asyncTask1('task1'), asyncTask2('task2'), asyncTask3('task3')]
+const promiseArray = [
+	asyncTask1('task1'),
+	asyncTask2('task2'),
+	asyncTask3('task3'),
+]
 
 myPromiseDotAllSettledPolyfill(promiseArray)
 	.then((results) => {
