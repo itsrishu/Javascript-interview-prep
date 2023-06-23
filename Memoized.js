@@ -8,14 +8,16 @@ function expensiveFunction(num1, num2) {
 	return num1 + num2
 }
 
-function memoizeFunction(func, context = null) {
-	let results = {}
-	return function (...args) {
-		const argsCache = JSON.stringify(args)
-		if (!results[argsCache]) {
-			results[argsCache] = func.call(context || this, ...args)
+const memoizeFunction = (func) => {
+	let cache = {}
+	return (...args) => {
+		const stringifiedKey = JSON.stringify(args)
+		if (stringifiedKey in cache) {
+			return cache[stringifiedKey]
 		}
-		return results[argsCache]
+		const result = func(...args)
+		cache[stringifiedKey] = result
+		return result
 	}
 }
 
