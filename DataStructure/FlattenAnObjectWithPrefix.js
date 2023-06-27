@@ -28,6 +28,8 @@ Output:
 
 */
 
+// A=1&B=”hello”&C.D=true&C.E=3&C.F.G=1&C.F.H=2&I=[1,2,3]
+
 function flattenObject(obj, prefix = "") {
   let flattenedObj = {};
 
