@@ -4,24 +4,21 @@
 
 //Input: arr = [1, 2, 3, [4, 5, [6, 7]]] , depth = 1
 
-function flattenAnArray(arr, depth) {
-	let flattenArray = []
-	function flattenArrayHelper(helperArray, currentDepth) {
-		for (let item of helperArray) {
-			if (Array.isArray(item) && currentDepth < depth) {
-				flattenArrayHelper(item, currentDepth + 1)
-			} else {
-				flattenArray.push(item)
-			}
-		}
-	}
+function flattenArrayWithDepth(arr, depth) {
+  let flattened = [];
 
-	flattenArrayHelper(arr, 0)
-	return flattenArray
+  arr.forEach((item) => {
+    if (Array.isArray(item) && depth > 1) {
+      flattened = flattened.concat(flattenArrayWithDepth(item, depth - 1));
+    } else {
+      flattened.push(item);
+    }
+  });
+
+  return flattened;
 }
+const arr = [1, [2, [3, 4], 5], 6];
+const depth = 2;
 
-const arr = [1, [2, [3, 4], 5], 6]
-const depth = 2
-
-const result = flattenAnArray(arr, depth)
-console.log(result)
+const result = flattenArrayWithDepth(arr, depth);
+console.log(result);
