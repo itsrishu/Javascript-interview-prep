@@ -14,7 +14,6 @@ Output: -1
 
 function getElementWithKFrequency(arr, k) {
 	let result = {}
-
 	for (let item of arr) {
 		if (result[item]) {
 			result[item]++
