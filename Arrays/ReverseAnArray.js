@@ -32,7 +32,6 @@ const reverseAStringWithoutExtraSpace = (str) => {
 		strArray[i] = strArray[strArray.length - 1 - i]
 		strArray[strArray.length - 1 - i] = temp
 	}
-	console.log(strArray)
 	return strArray.join('')
 }
 
