@@ -1,17 +1,12 @@
 function rotateArray(arr, k) {
 	const n = arr.length
 	if (n === 0) return arr
-
-	// Normalize k to be in the range [0, n)
 	k = k % n
-
 	if (k < 0) {
 		// If k is negative, convert it to a positive rotation
 		k = n + k
 	}
-
 	const rotated = []
-
 	for (let i = 0; i < n; i++) {
 		const newIndex = (i + k) % n
 		rotated[newIndex] = arr[i]

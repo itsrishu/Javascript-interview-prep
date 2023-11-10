@@ -117,3 +117,37 @@ function curry(func) {
 
 //const test = curry(normalFunction)
 //console.log(test)
+
+// sum(2,2,3,4)(4,5)(6)()
+// sum(2,2,3,4)(4,5)()
+// sum(2,2,3,4)()
+
+function sum(...args) {
+	let sumValue = args.reduce((acc, val) => acc + val, 0)
+
+	function add(...innerArgs) {
+		if (innerArgs.length === 0) {
+			return sumValue
+		}
+		sumValue += innerArgs.reduce((acc, val) => acc + val, 0)
+		return add
+	}
+
+	add.valueOf = () => sumValue
+
+	return add
+}
+
+// alternate approach
+
+function sum(...args) {
+	return function innerSum(...innerArgs) {
+		if (innerArgs.length === 0) {
+			// If no more arguments are provided, return the sum
+			return args.reduce((acc, val) => acc + val, 0)
+		} else {
+			// If more arguments are provided, concatenate and return a new curried function
+			return sum(...args, ...innerArgs)
+		}
+	}
+}
