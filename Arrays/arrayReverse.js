@@ -16,9 +16,10 @@ function reverseArrayInPlace(arr) {
 		arr[i] = arr[arr.length - 1 - i]
 		arr[arr.length - 1 - i] = temp
 	}
+	return arr
 }
 
 const originalArray = [1, 2, 3, 4, 5]
-const reversedArray = reverseArray(originalArray)
+const reversedArray = reverseArrayInPlace(originalArray)
 
 console.log(reversedArray) // Output: [5, 4, 3, 2, 1]
