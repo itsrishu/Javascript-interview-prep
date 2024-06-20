@@ -13,16 +13,20 @@ function throttle(func, delay) {
 	}
 }
 
-document
-	.getElementById('normal')
-	.addEventListener('click', (e) => throttledClick)
-
-const throttledClick = throttle(handleClick, 1000)
-
+// Define the function to be throttled
 function handleClick() {
 	console.log('Button clicked!')
 }
 
-;<button id='normal' onClick={handleClick}>
-	Click
-</button>
+// Create the throttled version of handleClick
+const throttledClick = throttle(handleClick, 1000)
+
+// Add the throttled function as the event listener
+document.addEventListener('click', () => {
+	console.log('org')
+	throttledClick()
+})
+
+// ex
+// Throttling Window Resize Events
+// Throttling Scroll Events

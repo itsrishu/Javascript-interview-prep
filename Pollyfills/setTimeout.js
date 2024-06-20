@@ -3,20 +3,16 @@
  or if requestAnimationFrame is not available for some reason, you may encounter an issue.
 */
 
-const customSetTimeout = (cb, delay) => {
-	let start = new Date().getTime()
-
-	const check = () => {
-		if (new Date().getTime() - start >= delay) {
-			cb()
-		} else {
-			requestAnimationFrame(check)
-		}
+function mySetTimeout(callback, delay) {
+	var startTime = Date.now()
+	function check() {
+		if (Date.now() > startTime + delay) {
+			callback()
+		} else requestIdleCallback(check)
 	}
-
-	requestAnimationFrame(check)
+	requestIdleCallback(check)
 }
 
-customSetTimeout(() => {
-	console.log('11111')
+mySetTimeout(() => {
+	console.log('hi')
 }, 1000)
