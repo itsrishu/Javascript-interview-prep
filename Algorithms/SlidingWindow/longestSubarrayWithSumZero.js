@@ -23,7 +23,7 @@ const resultt = longestSubarrayWithSumZero([1, 2, -3, 3, 1, -1, 2, -2])
 console.log(resultt.maxLength) // 6
 console.log(resultt.longestSubarray) // [2, -3, 3, 1, -1, 2, -2]
 
-function longestSubarrayWithSumZero(arr) {
+function longestSubarrayWithSumZeroOp(arr) {
 	const sumIndexMap = new Map()
 	let sum = 0
 	let maxLength = 0

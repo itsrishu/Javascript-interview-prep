@@ -33,3 +33,30 @@ let ex = [1, 2, 3, 4]
 let k = 5
 let result = getLongestSubarray(ex, k)
 console.log(result)
+
+function longestSubarrayWithSumAtMostK(arr, k) {
+	let start = 0
+	let currentSum = 0
+	let maxLength = 0
+
+	for (let end = 0; end < arr.length; end++) {
+		currentSum += arr[end]
+
+		// While the sum exceeds k, move the start pointer to reduce the window size
+		while (currentSum > k && start <= end) {
+			currentSum -= arr[start]
+			start++
+		}
+
+		// Update the maximum length if the current subarray is valid
+		if (currentSum <= k) {
+			maxLength = Math.max(maxLength, end - start + 1)
+		}
+	}
+
+	return maxLength
+}
+
+// Example usage:
+const arr = [1, 2, 3, 4, 5]
+console.log(longestSubarrayWithSumAtMostK(arr, k)) // Output: 3 ([2, 3, 4] is the longest subarray with sum <= 9)
