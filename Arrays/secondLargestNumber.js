@@ -20,4 +20,20 @@ const getSecondLargestNumberBySorting = (arr) => {
 	return sortedArray[arr.length - 2]
 }
 
-console.log(getSecondLargestNumberBySorting([18, 34, 5, 6, 2]))
+const secondLargestNumber = (arr) => {
+	let firstLargest = -Infinity
+	let secondLargest = Infinity
+
+	for (let i = 0; i < arr.length; i++) {
+		const ele = arr[i]
+		if (ele > firstLargest) {
+			firstLargest = ele
+			secondLargest = firstLargest
+		} else if (ele > secondLargest && ele !== firstLargest) {
+			secondLargest = ele
+		}
+	}
+	return secondLargest
+}
+
+console.log(secondLargestNumber([18, 34, 5, 6, 2]))
