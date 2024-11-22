@@ -12,7 +12,3 @@ const RetryPromieNTimes = (fn, attempt = 0, maxAttempts = 3) => {
 			})
 	})
 }
-
-
-
-const retryPromiseNTimesUsingLoop = 
